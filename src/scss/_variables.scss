@@ -15,6 +15,10 @@ $basic-transition:all .3s;
     position: absolute;
     z-index: $num;
 }
+@mixin positionF($num) {
+    position: fixed;
+    z-index: $num;
+}
 @mixin text-ellipsis($maxWidth) {
     display: inline-block;
     max-width:$maxWidth;

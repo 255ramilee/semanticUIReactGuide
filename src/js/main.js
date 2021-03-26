@@ -5,7 +5,7 @@ import {Container} from "semantic-ui-react";
 import Accordion from "./accordion";
 
 const App = ({ children }) => (
-    <Container style={{ margin: 20 }}>  
+    <Container>  
       {children}
     </Container>
   );

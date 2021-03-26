@@ -1,7 +1,10 @@
 import React, { Component } from 'react'
 import { Accordion, Icon } from 'semantic-ui-react'
 
-import Flexbox from "./flexBox";
+import FlexboxText from "./flexBoxText";
+import FlexBoxVisual from "./flexBoxVisual";
+import FormLayoutText from "./formLayoutText";
+import FormLayoutVisual from "./formLayoutVisual";
 
 export default class AccordionLayout extends Component {
   state = { activeIndex: 0 }
@@ -27,8 +30,9 @@ export default class AccordionLayout extends Component {
           <Icon name='dropdown' />
           <span>Flex Layout (Not a semantic UI function)</span>
         </Accordion.Title>
-        <Accordion.Content active={activeIndex === 0}>
-          <Flexbox />
+        <Accordion.Content active={activeIndex === 1}>
+            <FlexboxText />
+            <FlexBoxVisual />
         </Accordion.Content>
 
         <Accordion.Title
@@ -39,12 +43,9 @@ export default class AccordionLayout extends Component {
           <Icon name='dropdown' />
           <span>Form field layout</span>
         </Accordion.Title>
-        <Accordion.Content active={activeIndex === 1}>
-          <p>
-            There are many breeds of dogs. Each breed varies in size and
-            temperament. Owners often select a breed of dog that they find to be
-            compatible with their own lifestyle and desires from a companion.
-          </p>
+        <Accordion.Content active={activeIndex === 0}>
+          <FormLayoutText />
+          <FormLayoutVisual />
         </Accordion.Content>
 
         <Accordion.Title

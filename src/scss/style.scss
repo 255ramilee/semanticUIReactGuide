@@ -1,50 +1,213 @@
 @import "_reset";
 @import "_variables";
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&family=Noto+Sans+KR:wght@400;500;700&display=swap');
 
+/*
+*---------------- layout --------------
+*/
 html,
-body {height:100vh;}
-
+body {height:100%;}
 body {
-    @include flexBox(column, center, center);
-    background-color: $global-bg-color;
+    // @include flexBox(row, center, center);
+    font: {
+        size:15px;
+        weight:400;
+        family: 'Montserrat', 'Noto Sans KR', sans-serif;
+    }
+    letter-spacing: -1px;
 }
-
 header {
-    position: fixed;
+    @include positionF(2);
     top: 0;
     left: 0;
-    width:100%;
-    height: 70px;
-    background-color:#9780FF;
+    width:400px;
+    height: 100%;
+    background-color:#f5e8dd;
+    z-index: 2;
 
     h1 {
-        color:#fff;
+        padding: 28px 0 0 26px;
+        color:#c39379;
         font: {
-            size:38px;
-            weight:bold;
-            family:"roboto";
+            size:40px;
         }
+        line-height: 1.2;
     }
 }
-
 footer {
-    display: flex;
-    align-items: center;
-    height: 60px;
+    @include positionF(2);
+    bottom: 15px;
+    left:0;
+    width: 400px;
+    text-align: center;
 
     p {
-        color:#fff;
+        color:#c39379;
         font: {
-            size:16px;
-            weight:bold;
+            size:13px;
         }
     }
 }
+#root {
+    width:100%;
+    height:100%;
+}
+.ui.container {
+    width: calc(100% - 400px);
+    height: 100%;
+    margin-left: 400px !important;
+    background-color: #d4b7a2;
+}
 
-.container {
+/*
+*---------------- common --------------
+*/
+.ui.list {
+    margin-bottom: 35px;
+    
+    .item {
+        &.emp,
+        &.emp span,
+        &.emp strong {
+            color:#fff;
+            font: {
+                size:1.5rem;
+            }
+        
+            &::before {
+                @include pseudoSelector(12px, 8px);
+                margin-top: 2px;
+                margin-right: 10px;
+                vertical-align: top;
+                border-left: 2px solid #fff;
+                border-bottom: 2px solid #fff;
+                transform: rotate(310deg);
+            }
+        }
+        
+        &.emp span,
+        &.emp strong {
+            &::before {
+               content:none;
+            }
+        }
+    }
+}
+.ui.items {
+    .item {
+        margin: 0 0 35px;
+    
+        .content {
+            .header:not(.ui) {
+                color:#fff;
+                font: {
+                    size:20px;
+                }
+            }
+            .description {
+                padding-left: 15px;
+                color:#fff;
+                font: {
+                    size:15px;
+                }
+                text-indent: -13px;
+
+                &::before {
+                    @include pseudoSelector(6px, 1px);
+                    margin-right: 6px;
+                    background-color: #fff;
+                }
+            }
+        }
+    }
+}
+.txt-color01 {color:#7b7b6c !important;}
+
+/*
+*---------------- each components --------------
+*/
+/* accordion */
+.ui.accordion:not(.styled) {
+    .title:not(.ui) {
+        padding: 20px;
+        background-color: #9f9f87;
+
+        span {
+            color: #fff;
+            font: {
+                size:25px;
+            }
+        }
+
+        .dropdown.icon {
+            font-size: 16px;
+
+            &::before {color:#fff;}
+        }
+    }
+
+    .title~.content:not(.ui) {
+        padding: 30px 35px;
+        background-color: #afa78f;
+
+        &:last-child {padding-bottom:20px;}
+    }
+
+    .ui.items {
+
+        .content {
+            .ui.list {
+                .item {
+                    margin:0 0 3px;
+                    color: $global-white-color;
+                    span {
+                        color: $global-white-color;
+                    }
+                }
+            }
+        }
+
+        
+    }
+}
+/* accordion contents - flex box */
+.flex-layout {
     display: flex;
-    align-items: center;    
-    height: calc(100vh - 130px);
-    margin-top: 70px;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    height: 300px;
+    padding: 20px;
+    margin: 20px 0 0;
+    border: 2px solid rgba(255,255,255,0.5);
 
+    &.justify-start {justify-content: flex-start;}
+    &.justify-end {justify-content: flex-end;}
+    &.justify-sb {justify-content: space-between;}
+    &.justify-center {justify-content: center;}
+    &.align-stretch {
+        align-items: stretch;
+        .box {
+            //아래 스타일은 가이드 예제용으로만 추가하여 사용.
+            @include flexBox(row, center, center);
+            height:auto;
+            line-height: inherit;
+        }
+    }
+    &.align-end {align-items: flex-end;}
+    &.align-start {align-items: flex-start;}
+    &.align-center {align-items: center;}
+
+    .box {
+        width: 130px;
+        height: 130px;
+        color: #ff61ab;
+        font-size: 23px;
+        font-weight: bold;
+        border-radius: 15px;
+        text-align: center;
+        line-height: 130px;
+        border: 1px solid #ff61ab;
+        background-color: rgba(255,255,255,0.3);
+    }
 }
