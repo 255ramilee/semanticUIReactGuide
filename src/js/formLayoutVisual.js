@@ -15,9 +15,12 @@ const formVisualExample = () => {
     );
 
     const formGuideText = (formGuide1, formGuide2) => {
-        const guideTxt1 = [formGuide1, formGuide2];
+        const guideTxt1 = [
+            {id:1, msg:formGuide1},
+            {id:2, msg:formGuide2},
+        ];
     
-        const guideList = guideTxt1.map(guideTxt => <List.Item>{guideTxt}</List.Item>);
+        const guideList = guideTxt1.map((guideTxt, index) => <List.Item key={index}>{guideTxt.msg}</List.Item>);
     
         return <List>{guideList}</List>;
         
@@ -30,7 +33,7 @@ const formVisualExample = () => {
                 '폼 필드 레이아웃 기본 정렬 형태 -> 레이블: 블럭요소(단독으로 한 줄 차지) / 필드: 블럭요소 (개수를 지정하지 않으면 단독으로 한 줄 차지)',
                 (
                     <span>
-                        한 row에 10개 이하 field이면서 모두 일정한 너비를 가지는 경우 : 해당 필드를 <strong class="txt-color01">"필드개수 + fields"</strong> 클래스를 적용한 div 태그로 감싸서 사용하며, 1개일 경우엔 부모 태그 생략가능.<strong class="txt-color01">(field가 5개에서 4개로 줄어들 경우 빈 공간을 안 메꿔준다.)</strong>
+                        한 row에 10개 이하 field이면서 모두 일정한 너비를 가지는 경우 : 해당 필드를 <strong className="txt-color01">"필드개수 + fields"</strong> 클래스를 적용한 div 태그로 감싸서 사용하며, 1개일 경우엔 부모 태그 생략가능.<strong className="txt-color01">(field가 5개에서 4개로 줄어들 경우 빈 공간을 안 메꿔준다.)</strong>
                     </span>
                 ),
             ),
