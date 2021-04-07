@@ -96,6 +96,9 @@ footer {
 .ui.items {
     .item {
         margin: 0 0 35px;
+        font: {
+            size:15px;
+        }
     
         .content {
             .header:not(.ui) {
@@ -118,10 +121,29 @@ footer {
                     background-color: #fff;
                 }
             }
+
+            .ui.items {
+                .header:not(.ui) {
+                    font: {
+                        size:17px;
+                    }
+                }
+                .description {
+                    font: {
+                        size:14px;
+                    }
+                }
+
+                .ui.form {
+                    margin-top:2rem;
+                    padding: 1rem;
+                    background: rgba(0,0,0, 0.1);
+                }
+            }
         }
     }
 }
-.txt-color01 {color:#7b7b6c !important;}
+.txt-color01 {color:#ffd1d1 !important;}
 
 /*
 *---------------- each components --------------
