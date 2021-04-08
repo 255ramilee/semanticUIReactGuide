@@ -144,6 +144,14 @@ footer {
     }
 }
 .txt-color01 {color:#ffd1d1 !important;}
+.ui.form {
+    .inline.fields {margin:0;}
+}
+.ui.dropdown {
+    .menu {
+        &>.item {margin-bottom: 0;}
+    }
+}
 
 /*
 *---------------- each components --------------
